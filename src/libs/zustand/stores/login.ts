@@ -15,7 +15,7 @@ export const createLoginStore: StateCreator<LoginState> = (set) => ({
   isAuthenticated: false,
   user: null,
   login: async (email: string, password: string) => {
-    if (email === 'john.doe@example.com' && password === 'password123') {
+    if (email === 'kendantinio@gmail.com' && password === 'Wobitect2024!@#') {
       set({ 
         isAuthenticated: true, 
         user: { email } 

@@ -82,14 +82,12 @@ const mLayout = ({
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-        className={`bg-white border-t border-gray-200 transition-all duration-200 ease-out ${
+        className={`bg-white border-t border-gray-200 transition-all duration-200 ease-out rounded-t-[30px] ${
           isDragging ? 'shadow-lg' : ''
         }`}
         style={{ 
           height: `${pinListHeight}vh`, 
-          minHeight: '200px',
-          borderTopLeftRadius: '30px',
-          borderTopRightRadius: '30px'
+          minHeight: '200px'
         }}
       >
         <DraggableHandle onDrag={handleDrag} onDragEnd={handleDragEnd} />

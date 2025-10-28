@@ -24,9 +24,9 @@ const Button = ({
   const baseClasses = 'font-medium rounded-md focus:outline-none focus:ring-2 transition-colors'
   
   const variantClasses = {
-    primary: 'text-white hover:opacity-90 focus:ring-blue-500 relative overflow-hidden',
-    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500',
-    danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500'
+    primary: `text-white focus:ring-blue-500 relative overflow-hidden ${disabled ? '' : 'hover:opacity-90'}`,
+    secondary: `bg-gray-200 text-gray-900 focus:ring-gray-500 ${disabled ? '' : 'hover:bg-gray-300'}`,
+    danger: `bg-red-600 text-white focus:ring-red-500 ${disabled ? '' : 'hover:bg-red-700'}`
   }
   
   const sizeClasses = {
@@ -42,15 +42,8 @@ const Button = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${className}`}
-      style={{
-        ...(variant === 'primary' ? {
-          backgroundColor: '#2C71F6',
-          height: '38px',
-          borderRadius: '6px'
-        } : {}),
-        ...style
-      }}
+      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${variant === 'primary' ? 'bg-primary-500 h-38 rounded-6' : ''} ${className}`}
+      style={style}
     >
       {variant === 'primary' && !disabled && (
         <div className="absolute inset-0 -top-1 -left-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-shine"></div>

@@ -24,9 +24,9 @@ const Input = ({
   disabled = false
 }: InputProps) => {
   return (
-    <div className={`flex flex-col ${className}`} style={{ gap: '4px' }}>
-      <label className="flex items-center text-sm font-medium" style={{ color: '#202020' }}>
-        {label} {required && <span style={{ color: '#F73B3B', marginLeft: '4px' }}>*</span>}
+    <div className={`flex flex-col gap-1 ${className}`}>
+      <label className="flex items-center text-sm font-medium text-text-primary">
+        {label} {required && <span className="text-error-500 ml-1">*</span>}
       </label>
       <input
         type={type}
@@ -34,15 +34,12 @@ const Input = ({
         onChange={onChange}
         placeholder={placeholder}
         disabled={disabled}
-        className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
-        style={{
-          height: '38px',
-          borderColor: error ? '#F73B3B' : '#D1D5DB',
-          color: '#898989'
-        }}
+        className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-38 text-text-secondary ${
+          error ? 'border-error-500' : 'border-gray-300'
+        } ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       />
       {error && (
-        <p className="text-sm" style={{ color: '#F73B3B' }}>{error}</p>
+        <p className="text-sm text-error-500">{error}</p>
       )}
     </div>
   )

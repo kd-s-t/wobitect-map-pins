@@ -36,8 +36,12 @@ nvm install
 npm install
 npm run dev
 ```
-Open [http://localhost:5173](http://localhost:5173) in your browser  
-Open [https://wobitect-map-pins.vercel.app/login](https://wobitect-map-pins.vercel.app/login) in your browser 
+
+### Login Credentials
+- **Email**: `kendantinio@gmail.com`
+- **Password**: `Wobitect2024!@#`  
+Open [http://localhost:5173](http://localhost:5173) in your browser
+Open [https://wobitect-map-pins.vercel.app/login](https://wobitect-map-pins.vercel.app/login) in your browser
 
 ## Usage
 
@@ -63,3 +67,5 @@ src/
 <div align="center">
 Built with ❤️ for the Wobitect assessment
 </div>
+
+**Author:** @kd-s-t  

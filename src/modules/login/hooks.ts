@@ -6,8 +6,8 @@ export const useLoginForm = (initialData?: Partial<FormData>) => {
   const { login, isAuthenticated } = useLoginStore()
   
   const [formData, setFormData] = useState<FormData>({
-    email: initialData?.email || 'john.doe@example.com',
-    password: initialData?.password || 'password123'
+    email: initialData?.email || '',
+    password: initialData?.password || ''
   })
 
   const [isLoading, setIsLoading] = useState(false)
@@ -66,18 +66,18 @@ export const useLoginForm = (initialData?: Partial<FormData>) => {
         await onSubmit(formData)
       } else {
         setError('Invalid credentials')
+        setIsLoading(false) 
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed')
-    } finally {
       setIsLoading(false)
     }
   }, [formData, login])
 
   const resetForm = useCallback(() => {
     setFormData({
-      email: initialData?.email || 'john.doe@example.com',
-      password: initialData?.password || 'password123'
+      email: initialData?.email || '',
+      password: initialData?.password || ''
     })
     setError(null)
   }, [initialData])

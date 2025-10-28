@@ -42,7 +42,7 @@ const Page = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="p-6 sm:p-12 flex flex-col" style={{ gap: '32px' }}>
+          <div className="p-6 sm:p-12 flex flex-col gap-8">
             <Header 
               title="Account Login" 
               subtitle="Please enter your details to sign in." 
@@ -54,8 +54,7 @@ const Page = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="px-3 py-2 bg-red-100 border border-red-400 text-red-700 rounded text-sm"
-                style={{ marginTop: '-10px', marginBottom: '-10px' }}
+                className="px-3 py-2 bg-red-100 border border-red-400 text-red-700 rounded text-sm -mt-2.5 -mb-2.5"
               >
                 {error}
               </motion.div>

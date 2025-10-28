@@ -3,8 +3,8 @@ import { Input, Button } from '../../../shared/components'
 
 const Form = ({ formData, fieldErrors, onInputChange, onSubmit, isLoading }: FormProps) => {
   return (
-    <form onSubmit={onSubmit} className="flex flex-col" style={{ gap: '16px' }}>
-      <div className="flex flex-col" style={{ gap: '16px' }}>
+    <form onSubmit={onSubmit} className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         <Input
           label="Email"
           type="email"
@@ -28,9 +28,8 @@ const Form = ({ formData, fieldErrors, onInputChange, onSubmit, isLoading }: For
         type="submit"
         variant="primary"
         size="md"
-        className="w-full"
+        className="w-full mt-4"
         disabled={isLoading}
-        style={{ marginTop: '16px' }}
       >
         {isLoading ? (
           <div className="flex items-center justify-center gap-3">

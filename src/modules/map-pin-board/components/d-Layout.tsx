@@ -48,14 +48,7 @@ const DesktopLayout = ({
         initial={{ x: -400, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-        className="absolute top-[76px] left-6 w-[360px] bg-white rounded-xl flex flex-col z-10"
-        style={{
-          maxWidth: '360px',
-          height: 'calc(100vh - 96px)',
-          marginBottom: '20px',
-          boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1)',
-          borderRadius: '12px'
-        }}
+        className="absolute top-[76px] left-6 w-[360px] bg-white rounded-xl flex flex-col z-10 max-w-[360px] h-[calc(100vh-96px)] mb-5 shadow-lg"
       >
         <DesktopPinListSection
           pins={pins}
