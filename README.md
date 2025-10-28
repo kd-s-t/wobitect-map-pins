@@ -37,6 +37,7 @@ npm install
 npm run dev
 ```
 Open [http://localhost:5173](http://localhost:5173) in your browser  
+Open [https://wobitect-map-pins.vercel.app/login](https://wobitect-map-pins.vercel.app/login) in your browser 
 
 ## Usage
 
@@ -54,9 +55,11 @@ src/
 │   └── zustand/         # State management
 ├── modules/             # Feature modules
 │   ├── login/           # Authentication
-│   └── pin/            # Pin management
+│   └── pin/             # Pin management
 └── shared/              # Shared utilities and components
 ```
 
 
+<div align="center">
 Built with ❤️ for the Wobitect assessment
+</div>
