@@ -13,13 +13,13 @@ export const useLoginForm = (initialData?: Partial<FormData>) => {
 
   const validateEmail = (email: string): string | null => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!email) return 'Email is required'
+    if (!email.trim()) return 'Email is required'
     if (!emailRegex.test(email)) return 'Please enter a valid email address'
     return null
   }
 
   const validatePassword = (password: string): string | null => {
-    if (!password) return 'Password is required'
+    if (!password.trim()) return 'Password is required'
     if (password.length < 6) return 'Password must be at least 6 characters'
     return null
   }

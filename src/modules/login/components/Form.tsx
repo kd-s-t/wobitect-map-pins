@@ -11,7 +11,6 @@ const Form = ({ formData, fieldErrors, onInputChange, onSubmit, isLoading }: For
           value={formData.email}
           onChange={onInputChange('email')}
           error={fieldErrors?.email}
-          required
           disabled={isLoading}
         />
 
@@ -21,7 +20,6 @@ const Form = ({ formData, fieldErrors, onInputChange, onSubmit, isLoading }: For
           value={formData.password}
           onChange={onInputChange('password')}
           error={fieldErrors?.password}
-          required
           disabled={isLoading}
         />
       </div>
