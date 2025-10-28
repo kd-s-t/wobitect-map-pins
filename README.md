@@ -68,4 +68,6 @@ src/
 Built with ❤️ for the Wobitect assessment
 </div>
 
-**Author:** @kd-s-t  
+## Authors
+
+- [@kenn](https://www.linkedin.com/in/kdst/)
