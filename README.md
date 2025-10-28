@@ -49,7 +49,6 @@ Open [http://localhost:5173](http://localhost:5173) in your browser
 
 ```
 src/
-├── components/           # Shared UI components
 ├── libs/                # External library integrations
 │   ├── openstreetmap/   # Geocoding API
 │   └── zustand/         # State management
