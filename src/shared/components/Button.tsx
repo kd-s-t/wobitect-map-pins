@@ -8,6 +8,7 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg'
   disabled?: boolean
   className?: string
+  style?: React.CSSProperties
 }
 
 const Button = ({ 
@@ -17,12 +18,13 @@ const Button = ({
   variant = 'primary', 
   size = 'md',
   disabled = false,
-  className = ''
+  className = '',
+  style = {}
 }: ButtonProps) => {
   const baseClasses = 'font-medium rounded-md focus:outline-none focus:ring-2 transition-colors'
   
   const variantClasses = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
+    primary: 'text-white hover:opacity-90 focus:ring-blue-500 relative overflow-hidden',
     secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500',
     danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500'
   }
@@ -41,8 +43,19 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
       className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${className}`}
+      style={{
+        ...(variant === 'primary' ? {
+          backgroundColor: '#2C71F6',
+          height: '38px',
+          borderRadius: '6px'
+        } : {}),
+        ...style
+      }}
     >
-      {children}
+      {variant === 'primary' && !disabled && (
+        <div className="absolute inset-0 -top-1 -left-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-shine"></div>
+      )}
+      <span className="relative z-10">{children}</span>
     </button>
   )
 }

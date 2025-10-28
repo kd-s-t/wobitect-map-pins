@@ -12,6 +12,7 @@ export interface FormProps {
   fieldErrors?: {email?: string, password?: string}
   onInputChange: (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement>) => void
   onSubmit: (e: React.FormEvent) => void
+  isLoading?: boolean
 }
 
 export interface HeaderProps {

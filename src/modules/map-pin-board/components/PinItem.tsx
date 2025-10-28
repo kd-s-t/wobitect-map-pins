@@ -1,25 +1,32 @@
 import { useState } from 'react'
 import { Pin } from '@/libs/zustand/types'
+import { LocationIcon, TrashIcon } from '@/shared/components'
 
 interface PinItemProps {
   pin: Pin
-  index: number
   onRemovePin: (id: string) => void
+  onHover: (pinId: string | null) => void
+  onClick?: (pin: Pin) => void
+  isActive?: boolean
 }
 
-const PinItem = ({ pin, index, onRemovePin }: PinItemProps) => {
+const PinItem = ({ pin, onRemovePin, onHover, onClick, isActive = false }: PinItemProps) => {
   const [isDeleting, setIsDeleting] = useState(false)
 
   const handleDelete = () => {
     setIsDeleting(true)
-    // Delay the actual deletion to allow animation to complete
     setTimeout(() => {
       onRemovePin(pin.id)
     }, 300)
   }
 
-  // Use sequential numbering based on current position in the list
-  const displayNumber = index + 1
+  const handleClick = () => {
+    if (onClick) {
+      onClick(pin)
+    }
+  }
+
+  const displayNumber = pin.pinNumber
 
   const formatCoordinates = (lat: number, lng: number) => {
     const formatDMS = (coord: number, isLat: boolean) => {
@@ -34,11 +41,28 @@ const PinItem = ({ pin, index, onRemovePin }: PinItemProps) => {
   }
 
   return (
-    <div className={`bg-white border-b border-gray-200 p-5 flex items-center transition-all duration-300 ease-in-out ${
-      isDeleting 
-        ? 'transform translate-x-full opacity-0 scale-95' 
-        : 'transform translate-x-0 opacity-100 scale-100'
-    }`}>
+    <div 
+      className={`border-b border-gray-200 p-4 flex items-center transition-all duration-300 ease-in-out relative cursor-pointer ${
+        isActive 
+          ? 'bg-blue-50' 
+          : 'bg-white hover:bg-gray-50'
+      } ${
+        isDeleting 
+          ? 'transform translate-x-full opacity-0 scale-95' 
+          : 'transform translate-x-0 opacity-100 scale-100'
+      }`}
+      onMouseEnter={() => onHover(pin.id)}
+      onMouseLeave={() => onHover(null)}
+      onClick={handleClick}
+    >
+      {isDeleting && (
+        <div className="absolute inset-0 bg-red-100 bg-opacity-50 flex items-center justify-center z-10">
+          <div className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+            Deleting...
+          </div>
+        </div>
+      )}
+      
       <div className="w-10 h-10 bg-blue-50 border border-blue-200 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
         <span className="text-sm font-medium text-blue-700">#{displayNumber}</span>
       </div>
@@ -48,9 +72,7 @@ const PinItem = ({ pin, index, onRemovePin }: PinItemProps) => {
           <span className="text-sm font-medium text-gray-900">Pin #{displayNumber}</span>
         </div>
         <div className="flex items-center">
-          <svg className="w-3 h-3 text-gray-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-          </svg>
+          <LocationIcon className="w-3 h-3 text-gray-500 mr-2 flex-shrink-0" />
           <p className="text-xs text-gray-600">
             {formatCoordinates(pin.lat, pin.lng)}
           </p>
@@ -58,15 +80,16 @@ const PinItem = ({ pin, index, onRemovePin }: PinItemProps) => {
       </div>
       
       <button
-        onClick={handleDelete}
+        onClick={(e) => {
+          e.stopPropagation()
+          handleDelete()
+        }}
         disabled={isDeleting}
         className={`ml-4 w-10 h-10 border border-red-300 rounded-full flex items-center justify-center hover:bg-red-100 transition-colors flex-shrink-0 ${
           isDeleting ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
         }`}
       >
-        <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-        </svg>
+        <TrashIcon className="w-5 h-5 text-red-600" />
       </button>
     </div>
   )

@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react'
-import { FormData } from './types'
+import { LoginFormData } from './types'
 
-export const useLoginForm = (initialData?: Partial<FormData>) => {
-  const [formData, setFormData] = useState<FormData>({
+export const useLoginForm = (initialData?: Partial<LoginFormData>) => {
+  const [formData, setFormData] = useState<LoginFormData>({
     email: initialData?.email || 'john.doe@example.com',
     password: initialData?.password || 'password123'
   })
@@ -24,7 +24,7 @@ export const useLoginForm = (initialData?: Partial<FormData>) => {
     return null
   }
 
-  const handleInputChange = useCallback((field: keyof FormData) => (
+  const handleInputChange = useCallback((field: keyof LoginFormData) => (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const value = e.target.value
@@ -38,7 +38,7 @@ export const useLoginForm = (initialData?: Partial<FormData>) => {
 
   const handleSubmit = useCallback(async (
     e: React.FormEvent,
-    onSubmit: (data: FormData) => void
+    onSubmit: (data: LoginFormData) => void
   ) => {
     e.preventDefault()
     setIsLoading(true)

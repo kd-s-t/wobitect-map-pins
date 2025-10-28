@@ -1,41 +1,48 @@
 import { FormProps } from '../types'
 import { Input, Button } from '../../../shared/components'
 
-const Form = ({ formData, fieldErrors, onInputChange, onSubmit }: FormProps) => {
+const Form = ({ formData, fieldErrors, onInputChange, onSubmit, isLoading }: FormProps) => {
   return (
-    <form onSubmit={onSubmit} className="flex-1 flex flex-col justify-between">
-      <div className="px-10">
-        <div className="space-y-[20px]">
-          <Input
-            label="Email"
-            type="email"
-            value={formData.email}
-            onChange={onInputChange('email')}
-            error={fieldErrors?.email}
-            required
-          />
+    <form onSubmit={onSubmit} className="flex flex-col" style={{ gap: '16px' }}>
+      <div className="flex flex-col" style={{ gap: '16px' }}>
+        <Input
+          label="Email"
+          type="email"
+          value={formData.email}
+          onChange={onInputChange('email')}
+          error={fieldErrors?.email}
+          required
+          disabled={isLoading}
+        />
 
-          <Input
-            label="Password"
-            type="password"
-            value={formData.password}
-            onChange={onInputChange('password')}
-            error={fieldErrors?.password}
-            required
-          />
-        </div>
+        <Input
+          label="Password"
+          type="password"
+          value={formData.password}
+          onChange={onInputChange('password')}
+          error={fieldErrors?.password}
+          required
+          disabled={isLoading}
+        />
       </div>
 
-      <div className="px-10">
-        <Button
-          type="submit"
-          variant="primary"
-          size="md"
-          className="w-full"
-        >
-          Log in
-        </Button>
-      </div>
+      <Button
+        type="submit"
+        variant="primary"
+        size="md"
+        className="w-full"
+        disabled={isLoading}
+        style={{ marginTop: '16px' }}
+      >
+        {isLoading ? (
+          <div className="flex items-center justify-center gap-3">
+            <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+            <span>Logging in...</span>
+          </div>
+        ) : (
+          'Log in'
+        )}
+      </Button>
     </form>
   )
 }

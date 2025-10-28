@@ -9,6 +9,7 @@ interface InputProps {
   required?: boolean
   error?: string
   className?: string
+  disabled?: boolean
 }
 
 const Input = ({
@@ -19,12 +20,13 @@ const Input = ({
   placeholder,
   required = false,
   error,
-  className = ''
+  className = '',
+  disabled = false
 }: InputProps) => {
   return (
-    <div className={className}>
-      <label className="block text-sm font-medium text-gray-800 mb-1">
-        {label} {required && <span className="text-red-500">*</span>}
+    <div className={`flex flex-col ${className}`} style={{ gap: '4px' }}>
+      <label className="flex items-center text-sm font-medium" style={{ color: '#202020' }}>
+        {label} {required && <span style={{ color: '#F73B3B', marginLeft: '4px' }}>*</span>}
       </label>
       <input
         type={type}
@@ -32,12 +34,16 @@ const Input = ({
         onChange={onChange}
         placeholder={placeholder}
         required={required}
-        className={`w-full h-[38px] px-3 py-2 border rounded-[6px] focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-          error ? 'border-red-500' : 'border-gray-300'
-        }`}
+        disabled={disabled}
+        className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+        style={{
+          height: '38px',
+          borderColor: error ? '#F73B3B' : '#D1D5DB',
+          color: '#898989'
+        }}
       />
       {error && (
-        <p className="mt-1 text-sm text-red-600">{error}</p>
+        <p className="text-sm" style={{ color: '#F73B3B' }}>{error}</p>
       )}
     </div>
   )
