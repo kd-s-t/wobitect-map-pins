@@ -1,5 +1,5 @@
 <div align="center"> 
-    <img src="./githubdecor.jpg" width="100%" /> 
+    <img src="https://raw.githubusercontent.com/kd-s-t/wobletech-map-pins/refs/heads/main/public/githubdecor.jpg" width="100%" /> 
 </div>
 
 # Map Pin Board
