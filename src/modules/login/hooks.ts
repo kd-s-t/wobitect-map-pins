@@ -1,7 +1,10 @@
 import { useState, useCallback } from 'react'
+import { useLoginStore } from '@/libs/zustand'
 import { FormData } from './types'
 
 export const useLoginForm = (initialData?: Partial<FormData>) => {
+  const { login, isAuthenticated } = useLoginStore()
+  
   const [formData, setFormData] = useState<FormData>({
     email: initialData?.email || 'john.doe@example.com',
     password: initialData?.password || 'password123'
@@ -58,13 +61,18 @@ export const useLoginForm = (initialData?: Partial<FormData>) => {
     }
 
     try {
-      await onSubmit(formData)
+      const success = await login(formData.email, formData.password)
+      if (success) {
+        await onSubmit(formData)
+      } else {
+        setError('Invalid credentials')
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed')
     } finally {
       setIsLoading(false)
     }
-  }, [formData])
+  }, [formData, login])
 
   const resetForm = useCallback(() => {
     setFormData({
@@ -79,6 +87,7 @@ export const useLoginForm = (initialData?: Partial<FormData>) => {
     isLoading,
     error,
     fieldErrors,
+    isAuthenticated,
     handleInputChange,
     handleSubmit,
     resetForm

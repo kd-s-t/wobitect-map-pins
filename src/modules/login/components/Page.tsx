@@ -5,16 +5,14 @@ import { useLoginForm } from '../hooks'
 
 const Page = () => {
   const navigate = useNavigate()
-  const { formData, error, fieldErrors, handleInputChange, handleSubmit, isLoading } = useLoginForm()
+  const { formData, error, fieldErrors, isAuthenticated, handleInputChange, handleSubmit, isLoading } = useLoginForm()
 
   const handleFormSubmit = async (e: React.FormEvent) => {
-    await handleSubmit(e, async (data) => {
+    await handleSubmit(e, async () => {
       await new Promise(resolve => setTimeout(resolve, 2000))
       
-      if (data.email === 'john.doe@example.com' && data.password === 'password123') {
+      if (isAuthenticated) {
         navigate('/map-pin-board')
-      } else {
-        throw new Error('Invalid credentials')
       }
     })
   }
