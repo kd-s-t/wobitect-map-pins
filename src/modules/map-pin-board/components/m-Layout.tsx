@@ -9,7 +9,6 @@ import { mLayoutProps, Pin } from '../types'
 const mLayout = ({ 
   pins, 
   isLoading,
-  hoveredPinId, 
   clickedPinId,
   onPositionChange, 
   onAddPin, 

@@ -9,12 +9,10 @@ const DesktopLayout = ({
   pins, 
   isLoading,
   hoveredPinId, 
-  clickedPinId,
   onPositionChange, 
   onAddPin, 
   onRemovePin, 
   onPinHover, 
-  onPinClick,
   icon 
 }: DesktopLayoutProps) => {
   const mapRef = useRef<MapRef>(null)
