@@ -16,7 +16,6 @@ export interface PinStore {
   updatePinPosition: (id: string, lat: number, lng: number) => void
 }
 
-// Login related types
 export interface LoginFormData {
   email: string
   password: string

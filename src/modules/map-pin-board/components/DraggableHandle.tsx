@@ -1,9 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-
-interface DraggableHandleProps {
-  onDrag: (deltaY: number) => void
-  onDragEnd: () => void
-}
+import { DraggableHandleProps } from '../types'
 
 const DraggableHandle = ({ onDrag, onDragEnd }: DraggableHandleProps) => {
   const [isDragging, setIsDragging] = useState(false)

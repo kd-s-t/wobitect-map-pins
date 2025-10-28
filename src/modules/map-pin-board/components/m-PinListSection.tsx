@@ -1,17 +1,7 @@
 import { motion } from 'framer-motion'
-import { Pin } from '@/libs/zustand/types'
 import { List as PinList } from './index'
 import { SearchIcon, LoaderSpinner } from '@/shared/components'
-
-interface mPinListSectionProps {
-  pins: Pin[]
-  isLoading: boolean
-  onRemovePin: (id: string) => void
-  onPinHover: (id: string | null) => void
-  onPinClick?: (pin: Pin) => void
-  activePinId?: string | null
-  isMobile?: boolean
-}
+import { mPinListSectionProps } from '../types'
 
 const MPinListSection = ({ pins, isLoading, onRemovePin, onPinHover, onPinClick, activePinId, isMobile = false }: mPinListSectionProps) => {
   const headerHeight = isMobile ? 'h-[50px]' : 'h-[60px]'

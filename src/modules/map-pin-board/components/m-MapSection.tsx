@@ -1,24 +1,8 @@
 import { MapContainer, TileLayer } from 'react-leaflet'
-import { Icon } from 'leaflet'
-import { Pin } from '@/libs/zustand/types'
 import { ClickHandler as MapClickHandler } from './index'
 import DraggableMarker from './DraggableMarker'
 import { useRef, forwardRef, useImperativeHandle } from 'react'
-
-interface mMapSectionProps {
-  pins: Pin[]
-  hoveredPinId: string | null
-  clickedPinId: string | null
-  onPositionChange: (id: string, lat: number, lng: number) => void
-  onAddPin: (pin: Omit<Pin, 'id'>) => void
-  onPinClick: (pinId: string | null) => void
-  icon: Icon
-  showZoomControl?: boolean
-}
-
-export interface MapRef {
-  focusOnPin: (lat: number, lng: number) => void
-}
+import { mMapSectionProps, MapRef } from '../types'
 
 const MMapSection = forwardRef<MapRef, mMapSectionProps>(({ 
   pins, 

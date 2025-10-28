@@ -1,22 +1,10 @@
 import { motion } from 'framer-motion'
 import { useState, useRef } from 'react'
-import { Icon } from 'leaflet'
-import { Pin } from '@/libs/zustand/types'
 import { MapIcon } from '@/shared/components'
-import MMapSection, { MapRef } from './m-MapSection'
+import MMapSection from './m-MapSection'
 import MPinListSection from './m-PinListSection'
 import DraggableHandle from './DraggableHandle'
-
-interface mLayoutProps {
-  pins: Pin[]
-  isLoading: boolean
-  hoveredPinId: string | null
-  onPositionChange: (id: string, lat: number, lng: number) => void
-  onAddPin: (pin: Omit<Pin, 'id'>) => void
-  onRemovePin: (id: string) => void
-  onPinHover: (id: string | null) => void
-  icon: Icon
-}
+import { mLayoutProps, MapRef, Pin } from '../types'
 
 const mLayout = ({ 
   pins, 

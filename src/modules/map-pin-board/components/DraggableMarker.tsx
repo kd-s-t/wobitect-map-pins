@@ -1,18 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Marker, Tooltip as LeafletTooltip } from 'react-leaflet'
-import { Icon } from 'leaflet'
-import { Pin } from '@/libs/zustand/types'
 import { LocationIcon } from '@/shared/components'
-
-interface DraggableMarkerProps {
-  pin: Pin
-  icon: Icon
-  index: number
-  isHovered: boolean
-  isClicked: boolean
-  onPositionChange: (id: string, lat: number, lng: number) => void
-  onPinClick: (pinId: string | null) => void
-}
+import { DraggableMarkerProps } from '../types'
 
 const DraggableMarker = ({ pin, icon, isHovered, isClicked, onPositionChange, onPinClick }: DraggableMarkerProps) => {
   const markerRef = useRef<any>(null)
@@ -53,7 +42,6 @@ const DraggableMarker = ({ pin, icon, isHovered, isClicked, onPositionChange, on
     }
   }, [isHovered, isClicked])
 
-  // Close tooltip when clicking elsewhere on the map (only if click functionality is enabled)
   useEffect(() => {
     const handleMapClick = () => {
       if (onPinClick) {
@@ -61,7 +49,7 @@ const DraggableMarker = ({ pin, icon, isHovered, isClicked, onPositionChange, on
       }
     }
 
-    if (markerRef.current && onPinClick) {
+    if (markerRef.current) {
       const map = markerRef.current._map
       if (map) {
         map.on('click', handleMapClick)

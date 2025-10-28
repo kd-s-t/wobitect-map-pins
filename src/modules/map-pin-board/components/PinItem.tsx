@@ -1,14 +1,6 @@
 import { useState } from 'react'
-import { Pin } from '@/libs/zustand/types'
 import { LocationIcon, TrashIcon } from '@/shared/components'
-
-interface PinItemProps {
-  pin: Pin
-  onRemovePin: (id: string) => void
-  onHover: (pinId: string | null) => void
-  onClick?: (pin: Pin) => void
-  isActive?: boolean
-}
+import { PinItemProps } from '../types'
 
 const PinItem = ({ pin, onRemovePin, onHover, onClick, isActive = false }: PinItemProps) => {
   const [isDeleting, setIsDeleting] = useState(false)

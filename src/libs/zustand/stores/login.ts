@@ -15,7 +15,6 @@ export const createLoginStore: StateCreator<LoginState> = (set) => ({
   isAuthenticated: false,
   user: null,
   login: async (email: string, password: string) => {
-    // Simple mock authentication
     if (email === 'john.doe@example.com' && password === 'password123') {
       set({ 
         isAuthenticated: true, 

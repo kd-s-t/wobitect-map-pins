@@ -1,23 +1,9 @@
 import { motion } from 'framer-motion'
-import { useState, useRef } from 'react'
-import { Icon } from 'leaflet'
-import { Pin } from '@/libs/zustand/types'
+import { useRef } from 'react'
 import { MapIcon } from '@/shared/components'
-import DesktopMapSection, { MapRef } from './d-MapSection'
+import DesktopMapSection from './d-MapSection'
 import DesktopPinListSection from './d-PinListSection'
-
-interface DesktopLayoutProps {
-  pins: Pin[]
-  isLoading: boolean
-  hoveredPinId: string | null
-  clickedPinId: string | null
-  onPositionChange: (id: string, lat: number, lng: number) => void
-  onAddPin: (pin: Pin) => void
-  onRemovePin: (id: string) => void
-  onPinHover: (id: string | null) => void
-  onPinClick: (id: string | null) => void
-  icon: Icon
-}
+import { DesktopLayoutProps, MapRef } from '../types'
 
 const DesktopLayout = ({ 
   pins, 

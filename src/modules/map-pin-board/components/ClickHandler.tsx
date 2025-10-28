@@ -6,7 +6,7 @@ const ClickHandler = ({ onAddPin }: ClickHandlerProps) => {
     click: async (e) => {
       const { lat, lng } = e.latlng
 
-      onAddPin({ lat, lng })
+      onAddPin({ lat, lng, pinNumber: 0 })
     }
   })
 

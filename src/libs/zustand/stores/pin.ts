@@ -6,7 +6,6 @@ const loadPinsFromStorage = () => {
     const savedPins = localStorage.getItem('map-pinboard-pins')
     if (savedPins) {
       const pins = JSON.parse(savedPins)
-      // Migrate existing pins to have pinNumber
       return pins.map((pin: any, index: number) => ({
         ...pin,
         pinNumber: pin.pinNumber || index + 1
@@ -30,7 +29,6 @@ export const createPinStore: StateCreator<PinStore> = (set) => ({
   pins: [],
   isLoading: true,
   
-  // Load pins with 2-second delay
   loadPins: () => {
     setTimeout(() => {
       const loadedPins = loadPinsFromStorage()
@@ -39,7 +37,6 @@ export const createPinStore: StateCreator<PinStore> = (set) => ({
   },
   
   addPin: (pin) => set((state: PinStore) => {
-    // Get the next pin number
     const nextPinNumber = state.pins.length > 0 
       ? Math.max(...state.pins.map(p => p.pinNumber)) + 1 
       : 1

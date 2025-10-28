@@ -12,7 +12,6 @@ const LoginIcon = ({ size = 'md', className = '' }: LoginIconProps) => {
 
   return (
     <div className={`relative ${className}`}>
-      {/* Main animated circle */}
       <div className={`${sizeClasses[size]} animate-login-pulse`}>
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle 
@@ -26,7 +25,6 @@ const LoginIcon = ({ size = 'md', className = '' }: LoginIconProps) => {
         </svg>
       </div>
       
-      {/* Rotating ring around the circle */}
       <div className={`absolute inset-0 ${sizeClasses[size]} animate-login-rotate`}>
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle 
@@ -42,7 +40,6 @@ const LoginIcon = ({ size = 'md', className = '' }: LoginIconProps) => {
         </svg>
       </div>
       
-      {/* Bouncing dots */}
       <div className="absolute -right-1 -top-1 flex space-x-0.5">
         <div className="w-1 h-1 bg-current rounded-full animate-login-bounce" style={{ animationDelay: '0s' }}></div>
         <div className="w-1 h-1 bg-current rounded-full animate-login-bounce" style={{ animationDelay: '0.1s' }}></div>
