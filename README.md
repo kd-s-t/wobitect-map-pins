@@ -1,20 +1,11 @@
+<div align="center"> 
+    <img src="./githubdecor.jpg" width="100%" /> 
+</div>
+
 # Map Pin Board
 
 A modern, interactive web application for managing geographical pins on a map. Built with React, TypeScript, and TailwindCSS, featuring real-time geocoding and smooth animations.
 
-## Features
-
-### Core Functionality
-- **Interactive Map**: Click anywhere on the map to drop a pin
-- **Real-time Geocoding**: Automatic address lookup using OpenStreetMap Nominatim API
-- **Pin Management**: View, delete, and organize pins in a dynamic list
-- **Persistent Storage**: All pins are saved to localStorage
-- **Responsive Design**: Clean, modern UI that works across devices
-- **Draggable Pins**: Move pins by dragging them on the map
-- **Hover Tooltips**: Hover over list items to see tooltips on corresponding map pins
-- **Smooth Animations**: Elegant transitions for pin drops, deletions, and list updates
-
-## Tech Stack
 <div align="center"> 
 	<img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white" /> 
 	<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> 
@@ -24,6 +15,17 @@ A modern, interactive web application for managing geographical pins on a map. B
 	<img src="https://img.shields.io/badge/Framer%20Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" /> 
 	<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" /> 
 </div>
+
+### Features
+- **Interactive Map**: Click anywhere on the map to drop a pin
+- **Real-time Geocoding**: Automatic address lookup using OpenStreetMap Nominatim API
+- **Pin Management**: View, delete, and organize pins in a dynamic list
+- **Persistent Storage**: All pins are saved to localStorage
+- **Responsive Design**: Clean, modern UI that works across devices
+- **Draggable Pins**: Move pins by dragging them on the map
+- **Hover Tooltips**: Hover over list items to see tooltips on corresponding map pins
+- **Smooth Animations**: Elegant transitions for pin drops, deletions, and list updates
+
 
 ## Getting Started
 
